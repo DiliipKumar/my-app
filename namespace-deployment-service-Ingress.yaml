@@ -2,12 +2,12 @@
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: game-2048
+  name: react-2024
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: game-2048
+  namespace: react-2024
   name: deployment-2048
 spec:
   selector:
@@ -20,7 +20,7 @@ spec:
         app.kubernetes.io/name: app-2048
     spec:
       containers:
-      - image: public.ecr.aws/l6m2t8p7/docker-2048:latest
+      - image: 381492183981.dkr.ecr.ap-south-1.amazonaws.com/react-app:latest
         imagePullPolicy: Always
         name: app-2048
         ports:
@@ -29,7 +29,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: game-2048
+  namespace: react-2024
   name: service-2048
 spec:
   ports:
@@ -43,7 +43,7 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  namespace: game-2048
+  namespace: react-2024
   name: ingress-2048
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
